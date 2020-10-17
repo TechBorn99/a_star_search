@@ -52,13 +52,13 @@ class Node:
 
         column = self._x
         row = self._y
-        if (node_grid[row + 1][column].is_obstacle is False) and (row < rows):
+        if (node_grid[row + 1][column].is_obstacle() is False) and (row < rows):
             self.children.append(node_grid[row + 1][column])
-        if (node_grid[row - 1][column].is_obstacle is False) and (row > 0):
+        if (node_grid[row - 1][column].is_obstacle() is False) and (row > 0):
             self.children.append(node_grid[row - 1][column])
-        if (node_grid[row][column + 1].is_obstacle is False) and (column < columns):
+        if (node_grid[row][column + 1].is_obstacle() is False) and (column < columns):
             self.children.append(node_grid[row][column + 1])
-        if (node_grid[row][column - 1].is_obstacle is False) and (column > 0):
+        if (node_grid[row][column - 1].is_obstacle() is False) and (column > 0):
             self.children.append(node_grid[row][column - 1])
 
 
@@ -173,7 +173,7 @@ def a_star(grid, start, goal):
         children = current.children
         for i in range(len(children)):
             child = children[i]
-            if child.get_obstacle is False:
+            if child.is_obstacle() is False:
                 if child not in closed:
                     temp_g_cost = current.g + 1
                     if child in opened:
